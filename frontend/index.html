@@ -1,1 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual TryOn</title>
+</head>
+<body>
+    <button id="tryOnButton">Try On</button>
+<input type="file" id="userPhotoInput" accept="image/*" style="display:none" />
+<script src="widget.js"></script>
+<script>
+    document.getElementById("tryOnButton").addEventListener("click", () => {
+        document.getElementById("userPhotoInput").click();
+    });
 
+    document.getElementById("userPhotoInput").addEventListener("change", async (event) => {
+        const userFile = event.target.files[0];
+        if (!userFile) return;
+
+        const clothImageUrl = document.getElementById("productImage").src;
+        await tryOnClothes(userFile, clothImageUrl, "my_store_123");
+    });
+</script>
+</body>
+</html>
