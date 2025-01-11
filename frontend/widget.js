@@ -74,4 +74,3 @@ async function tryOnClothes(userFile, clothFile, storeId) {
     resultDiv.innerHTML = `<p style="color: red;">Error: ${err.message}</p>`;
   }
 }
-
