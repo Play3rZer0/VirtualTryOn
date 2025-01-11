@@ -5,11 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Virtual TryOn</title>
     <style>
-        /* ... previous styles ... */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align to the top */
+            min-height: 100vh;
+            padding-top: 2rem; /* Add some padding at the top */
+        }
+        .container {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #555;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .form-group input[type="file"] {
+            padding: 0.3rem;
+        }
+        .required {
+            color: red;
+            margin-left: 0.2rem;
+        }
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
         .loading {
             display: none;
             margin-top: 1rem;
             color: #666;
+            text-align: center;
         }
         .loading.active {
             display: block;
@@ -17,24 +78,26 @@
     </style>
 </head>
 <body>
-    <h1>Virtual TryOn</h1>
-    <form id="tryOnForm" onsubmit="return false;">
-        <div class="form-group">
-            <label>Store ID<span class="required">*</span></label>
-            <input type="text" id="storeId" value="my_store_123" required />
-        </div>
-        <div class="form-group">
-            <label>User Photo<span class="required">*</span></label>
-            <input type="file" id="userPhotoInput" accept="image/*" required />
-        </div>
-        <div class="form-group">
-            <label>Cloth Photo<span class="required">*</span></label>
-            <input type="file" id="clothPhotoInput" accept="image/*" required />
-        </div>
-        <button id="tryOnButton" type="submit">Try On</button>
-    </form>
-    <div id="loading" class="loading">Processing... Please wait.</div>
-    <div id="result"></div>
+    <div class="container">
+        <h1>Virtual TryOn</h1>
+        <form id="tryOnForm" onsubmit="return false;">
+            <div class="form-group">
+                <label>Store ID<span class="required">*</span></label>
+                <input type="text" id="storeId" value="my_store_123" required />
+            </div>
+            <div class="form-group">
+                <label>User Photo<span class="required">*</span></label>
+                <input type="file" id="userPhotoInput" accept="image/*" required />
+            </div>
+            <div class="form-group">
+                <label>Cloth Photo<span class="required">*</span></label>
+                <input type="file" id="clothPhotoInput" accept="image/*" required />
+            </div>
+            <button id="tryOnButton" type="submit">Try On</button>
+        </form>
+        <div id="loading" class="loading">Processing... Please wait.</div>
+        <div id="result"></div>
+    </div>
 
     <script src="widget.js"></script>
     <script>
